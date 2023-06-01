@@ -3,7 +3,9 @@ package com.ajcm.chordtranspasermp.ui
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -97,8 +99,10 @@ fun MainScreen() {
                 AnimatedContent(
                     targetState = chordsToConvertList.isNotEmpty(),
                     transitionSpec = {
-                        fadeIn() + slideInVertically(animationSpec = tween(400),
-                            initialOffsetY = { fullHeight -> fullHeight }) with
+                        fadeIn() + slideInVertically(animationSpec = spring(
+                            dampingRatio = 0.8f,
+                            stiffness = Spring.StiffnessLow
+                        ), initialOffsetY = { fullHeight -> fullHeight }) with
                                 fadeOut(animationSpec = tween(200))
                     },
                     modifier = Modifier
@@ -118,7 +122,10 @@ fun MainScreen() {
                 AnimatedContent(
                     targetState = selectionState,
                     transitionSpec = {
-                        fadeIn() + slideInVertically(animationSpec = tween(400),
+                        fadeIn() + slideInVertically(animationSpec = spring(
+                            dampingRatio = 0.8f,
+                            stiffness = Spring.StiffnessLow
+                        ),
                             initialOffsetY = { fullHeight -> fullHeight }) with
                                 fadeOut(animationSpec = tween(200))
                     },
