@@ -6,14 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -25,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ajcm.chordtranspasermp.transpaser.Chord
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalResourceApi::class)
 @Composable
@@ -76,7 +73,7 @@ fun ComposedChordSelector(
 
             FlowRow(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterHorizontally),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                 maxItemsInEachRow = 5,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -85,7 +82,14 @@ fun ComposedChordSelector(
                     .padding(bottom = 16.dp)
             ) {
                 selectedChords.forEach { chord ->
-                    ChordItem(value = chord) { c ->
+                    ChordItem(
+                        value = chord,
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .wrapContentHeight()
+                            .fillMaxWidth()
+                            .weight(1f, true)
+                    ) { c ->
                         composedChordSelected(c)
                     }
                 }

@@ -9,14 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ChordItem(value: String, onClick: (String) -> Unit) {
+fun ChordItem(value: String, modifier: Modifier, onClick: (String) -> Unit) {
     Surface(
-        modifier = Modifier
-            .padding(top = 16.dp)
-            .wrapContentSize()
+        modifier = modifier
             .clip(MaterialTheme.shapes.medium)
             .clickable { onClick(value) },
         shape = MaterialTheme.shapes.medium,
@@ -27,6 +26,7 @@ fun ChordItem(value: String, onClick: (String) -> Unit) {
             text = value,
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onTertiary,
+            textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         )

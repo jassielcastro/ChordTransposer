@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -50,7 +51,7 @@ fun NaturalChordSelector(
 
             FlowRow(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterHorizontally),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                 maxItemsInEachRow = 4,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -59,7 +60,14 @@ fun NaturalChordSelector(
                     .verticalScroll(rememberScrollState())
             ) {
                 selectedChords.forEach { chord ->
-                    ChordItem(value = chord) { c ->
+                    ChordItem(
+                        value = chord,
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .wrapContentHeight()
+                            .fillMaxWidth()
+                            .weight(1f, true)
+                    ) { c ->
                         chordSelected(c)
                     }
                 }
