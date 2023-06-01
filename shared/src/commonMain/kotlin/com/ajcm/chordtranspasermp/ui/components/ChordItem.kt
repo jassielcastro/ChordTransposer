@@ -2,7 +2,6 @@ package com.ajcm.chordtranspasermp.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,8 +18,7 @@ fun ChordItem(value: String, modifier: Modifier, onClick: (String) -> Unit) {
             .clip(MaterialTheme.shapes.medium)
             .clickable { onClick(value) },
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
-        shadowElevation = 0.dp
+        color = MaterialTheme.colorScheme.onTertiaryContainer
     ) {
         Text(
             text = value,

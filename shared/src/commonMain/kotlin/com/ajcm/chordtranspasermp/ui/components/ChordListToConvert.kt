@@ -91,7 +91,8 @@ fun ChordListToConvert(
 
         ConverterButtons(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
+                .align(Alignment.CenterVertically)
         ) { semiTone ->
             currentSemiTone += semiTone
         }

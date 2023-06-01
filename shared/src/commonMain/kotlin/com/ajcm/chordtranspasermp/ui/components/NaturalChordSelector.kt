@@ -28,7 +28,7 @@ fun NaturalChordSelector(
 ) {
     Surface(
         shape = MaterialTheme.shapes.large,
-        shadowElevation = 0.dp,
+        shadowElevation = 4.dp,
         color = MaterialTheme.colorScheme.tertiaryContainer,
         modifier = modifier
     ) {
