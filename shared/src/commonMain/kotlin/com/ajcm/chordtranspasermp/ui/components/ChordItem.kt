@@ -18,7 +18,7 @@ fun ChordItem(value: String, modifier: Modifier, onClick: (String) -> Unit) {
             .clip(MaterialTheme.shapes.medium)
             .clickable { onClick(value) },
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.onTertiaryContainer
+        color = MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.85f)
     ) {
         Text(
             text = value,

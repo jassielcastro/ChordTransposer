@@ -23,6 +23,7 @@ fun IconRes(
     stringPath: String,
     colorTint: Color,
     alpha: Float = 1f,
+    contentScale: ContentScale = ContentScale.Crop,
     modifier: Modifier
 ) {
     var image by remember { mutableStateOf<ImageBitmap?>(null) }

@@ -2,6 +2,7 @@ package com.ajcm.chordtranspasermp.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -42,58 +43,70 @@ fun ComposedChordSelector(
             chord + composition
         } ?: emptyList()
 
-        Column {
+        Box {
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            IconRes(
+                stringPath = "drawable/wave_1.png",
+                colorTint = MaterialTheme.colorScheme.background.copy(alpha = 0.6f),
                 modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                IconRes(
-                    stringPath = "drawable/arrow_back.png",
-                    colorTint = MaterialTheme.colorScheme.onTertiaryContainer,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable {
-                            composedChordSelected("")
-                        }
-                )
-
-                Text(
-                    text = "Selecciona su variante",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onTertiaryContainer,
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                )
-            }
-
-            FlowRow(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-                maxItemsInEachRow = 5,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
+                    .align(Alignment.BottomCenter)
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(bottom = 16.dp)
-            ) {
-                selectedChords.forEach { chord ->
-                    ChordItem(
-                        value = chord,
+            )
+
+            Column {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier
+                        .padding(16.dp)
+                ) {
+                    IconRes(
+                        stringPath = "drawable/arrow_back.png",
+                        colorTint = MaterialTheme.colorScheme.onTertiaryContainer,
                         modifier = Modifier
-                            .padding(top = 16.dp)
-                            .wrapContentHeight()
+                            .size(24.dp)
+                            .clickable {
+                                composedChordSelected("")
+                            }
+                    )
+
+                    Text(
+                        text = "Selecciona su variante",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onTertiaryContainer,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
                             .fillMaxWidth()
-                            .weight(1f, true)
-                    ) { c ->
-                        composedChordSelected(c)
+                    )
+                }
+
+                FlowRow(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                    maxItemsInEachRow = 5,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .padding(bottom = 16.dp)
+                ) {
+                    selectedChords.forEach { chord ->
+                        ChordItem(
+                            value = chord,
+                            modifier = Modifier
+                                .padding(top = 16.dp)
+                                .wrapContentHeight()
+                                .fillMaxWidth()
+                                .weight(1f, true)
+                        ) { c ->
+                            composedChordSelected(c)
+                        }
                     }
                 }
             }
         }
+
     }
 }

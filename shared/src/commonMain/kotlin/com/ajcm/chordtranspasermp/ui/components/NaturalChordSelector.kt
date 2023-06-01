@@ -1,6 +1,8 @@
 package com.ajcm.chordtranspasermp.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -35,44 +37,56 @@ fun NaturalChordSelector(
 
         val selectedChords = Chord.compositions.keys.toList()
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = "Selecciona el acorde",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
+        Box {
+
+            IconRes(
+                stringPath = "drawable/waves.png",
+                colorTint = MaterialTheme.colorScheme.background.copy(alpha = 0.6f),
                 modifier = Modifier
-                    .padding(top = 16.dp)
+                    .align(Alignment.BottomCenter)
                     .fillMaxWidth()
             )
 
-            FlowRow(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-                maxItemsInEachRow = 4,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 16.dp)
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                selectedChords.forEach { chord ->
-                    ChordItem(
-                        value = chord,
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                            .wrapContentHeight()
-                            .fillMaxWidth()
-                            .weight(1f, true)
-                    ) { c ->
-                        chordSelected(c)
+                Text(
+                    text = "Selecciona el acorde",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                )
+
+                FlowRow(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                    maxItemsInEachRow = 4,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 16.dp)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    selectedChords.forEach { chord ->
+                        ChordItem(
+                            value = chord,
+                            modifier = Modifier
+                                .padding(top = 16.dp)
+                                .wrapContentHeight()
+                                .fillMaxWidth()
+                                .weight(1f, true)
+                        ) { c ->
+                            chordSelected(c)
+                        }
                     }
                 }
             }
         }
+
 
     }
 }
